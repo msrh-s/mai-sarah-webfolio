@@ -1226,3 +1226,38 @@ nav ul.nav-links {
     border: 1px solid rgba(0,0,0,0.06);
   }
 }
+
+/* ===============================
+   FIX HEADER MOBILE DEFINITIF
+================================ */
+
+@media (max-width: 900px){
+
+  /* Cacher les liens desktop */
+  .nav-links{
+    display: none !important;
+  }
+
+  /* Afficher le hamburger */
+  .nav-toggle{
+    display: inline-flex !important;
+  }
+
+  /* Quand menu ouvert */
+  header.nav-open .nav-links{
+    display: grid !important;
+
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+
+    gap: 10px;
+    padding: 14px 6% 18px;
+
+    background: rgba(245,243,238,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(123,97,255,0.2);
+  }
+
+}
