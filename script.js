@@ -187,3 +187,23 @@ document.addEventListener("click", (e) => {
     window.location.href = href;
   }, 420);
 });
+
+// Mobile nav toggle
+const header = document.querySelector("header");
+const toggle = document.querySelector(".nav-toggle");
+const links = document.querySelectorAll(".nav-links a");
+
+if (toggle && header) {
+  toggle.addEventListener("click", () => {
+    const isOpen = header.classList.toggle("nav-open");
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  // close menu when clicking a link
+  links.forEach((a) => {
+    a.addEventListener("click", () => {
+      header.classList.remove("nav-open");
+      toggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
