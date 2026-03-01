@@ -228,3 +228,37 @@ scrollBtn.addEventListener("click", () => {
     behavior: "smooth"
   });
 });
+
+/* ==============================
+   INTERESTS — auto vertical scroll (2 columns)
+============================== */
+(function initInterestsMarquee() {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion) return;
+
+  const cols = document.querySelectorAll(".interests-col .interests-marquee");
+  if (!cols.length) return;
+
+  cols.forEach((track) => {
+    // Duplicate content for seamless loop
+    const items = Array.from(track.children);
+    items.forEach((el) => {
+      const clone = el.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      track.appendChild(clone);
+    });
+
+    // Pause / resume helpers
+    const pause = () => { track.style.animationPlayState = "paused"; };
+    const resume = () => { track.style.animationPlayState = "running"; };
+
+    // Desktop hover pause
+    track.addEventListener("mouseenter", pause);
+    track.addEventListener("mouseleave", resume);
+
+    // Mobile: pause while touching (finger down), resume on release
+    track.addEventListener("touchstart", pause, { passive: true });
+    track.addEventListener("touchend", resume, { passive: true });
+    track.addEventListener("touchcancel", resume, { passive: true });
+  });
+})();
