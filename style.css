@@ -456,6 +456,47 @@ nav ul.nav-links li a.active{ color: #5c6cff; }
 }
 
 /* =========================================================
+   HOW I WORK — centered version
+========================================================= */
+
+.how-i-work{
+  margin: 70px auto 0 auto;
+  max-width: 900px;
+  text-align: center;
+}
+
+.how-title{
+  display: inline-flex;   /* important pour centrer avec l’icône */
+  align-items: center;
+  gap: 12px;
+
+  font-family: "Playfair Display", serif;
+  font-size: 1.3rem;
+  margin-bottom: 18px;
+}
+
+.how-icon{
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+
+  display: grid;
+  place-items: center;
+
+  background: rgba(255, 200, 0, 0.15);
+  border: 1px solid rgba(255, 200, 0, 0.35);
+
+  color: #f4b400;
+  font-size: 15px;
+}
+
+.how-text{
+  color: var(--text-light);
+  line-height: 1.85;
+  font-size: 1rem;
+}
+
+/* =========================================================
    EXPERIENCE — tech premium but LIGHT (no purple background)
 ========================================================= */
 #experience .experience-item{
@@ -692,6 +733,61 @@ nav ul.nav-links li a.active{ color: #5c6cff; }
   }
 
   .timeline-date::after{ display: none; }
+}
+
+/* ===== EDUCATION TIMELINE — MOBILE FIX ===== */
+@media (max-width: 700px){
+
+  /* on simplifie la structure */
+  .timeline{
+    padding-left: 0;
+  }
+
+  /* ligne verticale plus proche du bord */
+  .timeline::before{
+    left: 18px;
+  }
+
+  /* plus besoin d'offset “desktop date à gauche” */
+  .timeline-item{
+    padding-left: 0;
+    margin-bottom: 46px;
+  }
+
+  /* la carte passe en “pleine largeur” avec marge à gauche */
+  .timeline-content{
+    margin-left: 44px; /* laisse voir la ligne */
+    padding: 22px 18px;
+  }
+
+  /* header: on empile pour éviter le space-between */
+  .timeline-header{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  /* date: devient un badge au-dessus, 1 ligne, stable */
+  .timeline-date{
+    position: relative;
+    left: auto;
+    top: auto;
+    width: auto;
+    text-align: left;
+
+    font-size: 1.15rem;
+    font-weight: 700;
+    white-space: nowrap;      /* ✅ empêche 2023 / 2025 de se séparer */
+    line-height: 1.1;
+
+    margin-bottom: 8px;
+  }
+
+  /* on enlève le petit trait vertical à droite de la date */
+  .timeline-date::after{
+    display: none;
+  }
 }
 
 /* =========================================================
